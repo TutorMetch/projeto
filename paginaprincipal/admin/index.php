@@ -26,14 +26,14 @@
 <body>
     <div class="login-container">
         <h2 class="text-center mb-4">Login</h2>
-        <form action="./home.html" method="post">
+        <form action="./logar.php" method="post">
             <div class="mb-3">
                 <label for="login" class="form-label">Login</label>
-                <input type="login" class="form-control" id="email" placeholder="Digite seu login">
+                <input type="login" class="form-control" name="login" placeholder="Digite seu login">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
 
