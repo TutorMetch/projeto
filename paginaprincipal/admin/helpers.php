@@ -53,17 +53,16 @@ class Helpers extends connect {
  *
  * @return void
  */
-public static function alerta( $mensagem="",$titulo=null, $classe='success', $arrBt = null) {
-
-  $html = "
+    public static function alerta($titulo = null, $mensagem="", $classe = 'success', $arrBt = null) {
+      $html = "
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
           var myModal = new bootstrap.Modal(document.getElementById('modalAlerta'));
           myModal.show();
         });
       </script>
       <div class=\"modal fade\" id=\"modalAlerta\" tabindex=\"-1\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-dialog\">
           <div class=\"modal-content\">
             <div class=\"modal-header\">
               <h5 class=\"modal-title\" id=\"modalLabel\">{$titulo}</h5>
@@ -73,35 +72,34 @@ public static function alerta( $mensagem="",$titulo=null, $classe='success', $ar
               {$mensagem}
             </div>
             <div class=\"modal-footer\">";
-
-  if ($arrBt == null) {
-      $html .= "<a href=\"javascript:history.go(-1)\" class=\"btn btn-primary\">Voltar</a>";
-  } else {
-      foreach ($arrBt as $bt) {
-          $html .= "<a href=\"{$bt['link']}\" class=\"btn {$bt['class']}\">{$bt['nome']}</a>";
+      
+      if ($arrBt == null) {
+          $html .= "<a href=\"javascript:history.go(-1)\" class=\"btn btn-primary\">Voltar</a>";
+      } else {
+          foreach ($arrBt as $bt) {
+              $html .= "<a href=\"{$bt['link']}\" class=\"btn {$bt['class']}\">{$bt['nome']}</a>";
+          }
       }
-  }
-
-  $html .= " </div>
+    
+      $html .= " </div>
           </div>
         </div>
       </div>";
-  echo $html;
-}
-
-public static function alertaErro($mensagem, $urlVolta = null) {
-
-  $volta = $urlVolta ? $urlVolta : "javascript:history.go(-1)";
-
-  echo "
+      echo $html;
+    }
+    
+    public static function alertaErro($mensagem, $urlVolta = null) {
+      $volta = $urlVolta ? $urlVolta : "javascript:history.go(-1)";
+    
+      echo "
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
           var myModal = new bootstrap.Modal(document.getElementById('modalErro'));
           myModal.show();
         });
       </script>
       <div class=\"modal fade\" id=\"modalErro\" tabindex=\"-1\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-dialog\">
           <div class=\"modal-content\">
             <div class=\"modal-header\">
               <h5 class=\"modal-title\" id=\"modalLabel\">Erro!</h5>
@@ -116,21 +114,21 @@ public static function alertaErro($mensagem, $urlVolta = null) {
           </div>
         </div>
       </div>";
-  exit();
-}
-
-public static function alertaSucesso($mensagem, $urlVolta = null) {
-  $volta = $urlVolta ? $urlVolta : "javascript:history.go(-1)";
-
-  $html = "
+      exit();
+    }
+    
+    public static function alertaSucesso($mensagem, $urlVolta = null) {
+      $volta = $urlVolta ? $urlVolta : "javascript:history.go(-1)";
+    
+      $html = "
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
           var myModal = new bootstrap.Modal(document.getElementById('modalSucesso'));
           myModal.show();
         });
       </script>
       <div class=\"modal fade\" id=\"modalSucesso\" tabindex=\"-1\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-dialog\">
           <div class=\"modal-content\">
             <div class=\"modal-header\">
               <h5 class=\"modal-title\" id=\"modalLabel\">Sucesso!</h5>
@@ -140,33 +138,32 @@ public static function alertaSucesso($mensagem, $urlVolta = null) {
               {$mensagem}
             </div>
             <div class=\"modal-footer\">";
-
-  if ($urlVolta != null) {
-      $html .= "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar e ficar</button>";
-      $html .= "<a href=\"{$volta}\" class=\"btn btn-primary\">Voltar</a>";
-  } else {
-      $html .= "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar</button>";
-  }
-
-  $html .= "
+      
+      if ($urlVolta != null) {
+          $html .= "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar e ficar</button>";
+          $html .= "<a href=\"{$volta}\" class=\"btn btn-primary\">Voltar</a>";
+      } else {
+          $html .= "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar</button>";
+      }
+    
+      $html .= "
             </div>
           </div>
         </div>
       </div>";
-  echo $html;
-}
-
-public static function alertaConfirma($mensagem, $urlSim, $urlNao) {
-
-  echo "
+      echo $html;
+    }
+    
+    public static function alertaConfirma($mensagem, $urlSim, $urlNao) {
+      echo "
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
           var myModal = new bootstrap.Modal(document.getElementById('modalConfirma'));
           myModal.show();
         });
       </script>
       <div class=\"modal fade\" id=\"modalConfirma\" tabindex=\"-1\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-dialog\">
           <div class=\"modal-content\">
             <div class=\"modal-header\">
               <h5 class=\"modal-title\" id=\"modalLabel\">Confirmação!</h5>
@@ -182,8 +179,8 @@ public static function alertaConfirma($mensagem, $urlSim, $urlNao) {
           </div>
         </div>
       </div>";
-  exit();
-}
+      exit();
+    }
 
   
 

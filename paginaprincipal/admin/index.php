@@ -34,7 +34,7 @@
     <div class="login-container">
         <h2 class="text-center mb-4">Login</h2>
         <div class="alert alert-danger" id="errorMessage"></div>
-        <form id="loginForm">
+        <form id="loginForm" >
             <div class="mb-3">
                 <label for="login" class="form-label">Login</label>
                 <input type="text" class="form-control" name="login" id="login" placeholder="Digite seu login" required>
