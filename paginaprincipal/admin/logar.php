@@ -1,30 +1,34 @@
+
 <?php
-    session_start();
 
+session_start();
 
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
+// $login = isset($_POST['login']) ? $_POST['login'] : '';
+// $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+
+// a partir do PHP 7.0, você pode usar o operador de coalescência nula (??), 
+// que é uma maneira mais concisa de fazer essa verificação:
+$login = $_POST['login'] ?? '';
+$senha = $_POST['senha'] ?? '';
 
 include_once "./connect.php";
 include_once "./helpers.php";
 
 $sql = new connect();
 
-$query = "SELECT login, senha from usuarios Where login = '{$login}";
+$query = "SELECT login, senha from usuarios WHERE login = '{$login}' ";
 
-$loginDb = $sql -> select($query);
-$senhaDb = $loginDb['senha'];
+$loginDb = $sql->select($query);
 
-if (isset($loginDb)){
+if (isset($loginDb) && $loginDb != false) {
+    $senhaDb = $loginDb['senha'];
     if ($senha == $senhaDb) {
         $_SESSION['login'] = $login;
-        header("Location:./home.php");
-        
+        echo json_encode(['success' => true]);
     } else {
-        Helpers::alertaErro("seu login ou semha estão incorretos", './index.php');
+        echo json_encode(['success' => false, 'message' => 'Senha Incorreta.']);
     }
+}else{
+    echo json_encode(['success' => false, 'message' => 'Login Incorreto.']);
 }
-
-var_dump($loginDb)
-
- ?>
+?>
