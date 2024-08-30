@@ -1,0 +1,3 @@
+<?php
+echo "Alterar senha";
+?>

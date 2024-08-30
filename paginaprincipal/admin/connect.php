@@ -11,6 +11,20 @@ define('PASS', '');
 
 class connect
 {
+  function query($sql)
+  {
+    try {
+      $cnx = new PDO('mysql:host=' . HOST . ';dbname=' . DB . '', USER, PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+      return $cnx->query($sql);
+    } catch (PDOException $e) {
+      echo "Ops! desculpe, algo deu errado, por favor tente mais tarde:<br>";
+      if ($_SESSION['debug'] == true) {
+        echo $e->getMessage();
+      }
+      exit;
+    }
+    $cnx = null;
+  }
 
   function select($sql)
   {

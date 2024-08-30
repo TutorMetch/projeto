@@ -44,6 +44,9 @@
                 <input type="password" class="form-control" name="senha" id="password" placeholder="Digite sua senha" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
+            <div style="background-color:blue;"  class="text-center mt-3">
+                <a  href="cadastro.php" class="btn btn-secondary" style="width: 370px;">Cadastre-se</a>
+            </div>
         </form>
     </div>
 

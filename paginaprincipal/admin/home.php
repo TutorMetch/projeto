@@ -17,6 +17,7 @@
 <body>
 
     <head>
+
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Admin-Site</a>
@@ -58,6 +59,16 @@
 
         </div>
     </head>
+    <section>
+        <?php
+        $pg = $_GET['pg'] ?? '';
+        if ($pg) {
+            include_once "./pg/inicio.php";
+        } else {
+            include_once "./pg/{$pg}.php";
+        }
+        ?>
+    </section>
 
 </body>
 
