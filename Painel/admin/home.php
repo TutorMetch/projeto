@@ -59,6 +59,19 @@
         </div>
     </head>
 
+    <section>
+        <?php
+            $pg = $_GET['pg'] ?? "";
+
+
+            if(!$pg){
+                include_once "./pg/inicio.php";
+            }else{
+                include_once "./pg/{$pg}.php";
+            }
+        ?>
+    </section>    
+
 </body>
 
 </html>
