@@ -60,14 +60,15 @@
         </div>
     </head>
     <section>
-        <?php
-        $pg = $_GET['pg'] ?? '';
-        if ($pg) {
-            include_once "./pg/inicio.php";
-        } else {
-            include_once "./pg/{$pg}.php";
-        }
-        ?>
+    <?php
+$pg = $_GET['pg'] ?? '';
+if ($pg) {
+    include_once "./pg/{$pg}.php";
+} else {
+    include_once "./pg/inicio.php";
+}
+?>
+    
     </section>
 
 </body>
