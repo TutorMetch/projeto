@@ -15,7 +15,7 @@ include_once "./helpers.php";
 $login = $_POST['login'] ?? '';
 $senha = $_POST['senha'] ?? '';
 
-$senha = Helpers::encripta($senha);
+//$senha = Helpers::encripta($senha);
 
 
 $sql = new connect();

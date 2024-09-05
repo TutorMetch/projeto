@@ -1,3 +1,3 @@
 <h1>
-    Painel de Administração
+    Home
 </h1>
