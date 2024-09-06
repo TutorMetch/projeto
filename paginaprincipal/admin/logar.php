@@ -13,7 +13,7 @@ $senha = $_POST['senha'] ?? '';
 
 include_once "./connect.php";
 include_once "./helpers.php";
-$senha = Helpers::encripta($senha);
+ $senha = Helpers::encripta($senha);
 
 
 

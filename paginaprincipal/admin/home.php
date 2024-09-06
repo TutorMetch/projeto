@@ -9,15 +9,16 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-<?php
-    include_once "./verifica.php";
-?>
+    <?php
+    include "./verifica.php";
+    ?>
+
+
 </head>
 
 <body>
 
     <head>
-
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Admin-Site</a>
@@ -28,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="?pg=homePg">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
@@ -59,17 +60,22 @@
 
         </div>
     </head>
-    <section>
-    <?php
-$pg = $_GET['pg'] ?? '';
-if ($pg) {
-    include_once "./pg/{$pg}.php";
-} else {
-    include_once "./pg/inicio.php";
-}
-?>
-    
-    </section>
+
+    <div class="container">
+        <section>
+
+            <?php
+            $pg = $_GET['pg'] ?? "";
+
+            if (!$pg) {
+                include_once "./pg/inicio.php";
+            } else {
+                include_once "./pg/{$pg}.php";
+            }
+            ?>
+            
+        </section>
+    </div>
 
 </body>
 
