@@ -296,4 +296,13 @@ class Helpers
     
     return $consulta['setting_value'];
   }
+  public static function setSettings($setting_key)
+  {
+    $sql = new connect();
+    $dados = ["setting_Value"=>'setting_value'];
+    $consulta = $sql->update("settings", $dados, "setting_key = '{$setting_key}'");
+    $consulta = $sql->insert("settings", $dados);
+    
+    return $consulta['setting_value'];
+  }
 }
