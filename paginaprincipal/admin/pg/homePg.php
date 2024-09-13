@@ -1,32 +1,24 @@
 <?php
-
-$query = "SELECT * FROM home";
-
-$r = $sql->select($query);
+$nomePerfil = $sql->select("SELECT * FROM settings where id=6");
+$linkTwitter = $sql->select("SELECT * FROM settings where id=1");
+$linkFacebook = $sql->select("SELECT * FROM settings where id=2");
+$linkInstagram = $sql->select("SELECT * FROM settings where id=3");
+$linkSkype = $sql->select("SELECT * FROM settings where id=4");
+$linkLinkedin = $sql->select("SELECT * FROM settings where id=5"); 
 ?>
+<h1>Home</h1>
 
-<h1>Página HOME</h1>
-
-<form class="form-group" method="post" action="./" enctype="multipart/form-data">
-
-<label>Imagem de Perfil</label>
-<input class="form-control" type="file" name="imagem_perfil">
-
-<label>Texto Perfil</label>
-<input class="form-control" type="text" name="texto_perfil" value="<?=$r['texto_perfil']?>">
-
-<label>Imagem Principal</label>
-<input type="file" class="form-control" name="imagem_principal">
-
-<label>Link Face</label>
-<input type="text" class="form-control" name="link_face">
-
-<label>Link Instagram</label>
-<input type="text" class="form-control" name="link_insta">
-
-<label>Link Linkedin</label>
-<input type="text" class="form-control" name="link_linkedin">
-
-<input type="submit" name="salvar" value="Salvar">
-
+<form action="./" method="post" class="form-group">
+    <label class="label" for="nome_perfil">Nome Perfil</label>
+    <input class="form-control" type="text" name="nome_perfil" id="nome_perfil" value="<?=$nomePerfil['setting_value']?>">
+    <label class="label" for="link_twitter">Link Twitter</label>
+    <input class="form-control" type="text" name="link_twitter" id="link_twitter" value="<?=$linkTwitter['setting_value']?>">
+    <label class="label" for="link_facebook">Link Facebook</label>
+    <input class="form-control" type="text" name="link_facebook" id="link_facebook" value="<?=$linkFacebook['setting_value']?>">
+    <label class="label" for="link_instagram">Link Instagram</label>
+    <input class="form-control" type="text" name="link_instagram" id="link_instagram" value="<?=$linkInstagram['setting_value']?>">
+    <label class="label" for="link_skype">Link Skype</label>
+    <input class="form-control" type="text" name="link_skype" id="link_skype" value="<?=$linkSkype['setting_value']?>">
+    <label class="label" for="link_linkedin">Link LinkedIn</label>
+    <input class="form-control" type="text" name="link_linkedin" id="link_linkedin" value="<?=$linkLinkedin['setting_value']?>">
 </form>

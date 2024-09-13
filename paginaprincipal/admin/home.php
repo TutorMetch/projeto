@@ -63,7 +63,6 @@
 
     <div class="container">
         <section>
-
             <?php
             $pg = $_GET['pg'] ?? "";
 
@@ -73,7 +72,6 @@
                 include_once "./pg/{$pg}.php";
             }
             ?>
-            
         </section>
     </div>
 
