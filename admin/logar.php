@@ -11,9 +11,9 @@ session_start();
 $login = $_POST['login'] ?? '';
 $senha = $_POST['senha'] ?? '';
 
-include_once "./connect.php";
-include_once "./helpers.php";
- $senha = Helpers::encripta($senha);
+require_once "./connect.php";
+require_once "./helpers.php";
+$senha = Helpers::encripta($senha);
 
 
 
