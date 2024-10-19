@@ -8,14 +8,13 @@ session_start();
 
 // a partir do PHP 7.0, você pode usar o operador de coalescência nula (??), 
 // que é uma maneira mais concisa de fazer essa verificação:
+include_once "./connect.php";
+include_once "./helpers.php";
+
+
 $login = $_POST['login'] ?? '';
 $senha = $_POST['senha'] ?? '';
-
-require_once "./connect.php";
-require_once "./helpers.php";
 $senha = Helpers::encripta($senha);
-
-
 
 
 $sql = new connect();
@@ -32,7 +31,7 @@ if (isset($loginDb) && $loginDb != false) {
     } else {
         echo json_encode(['success' => false, 'message' => 'Senha Incorreta.']);
     }
-}else{
+} else {
     echo json_encode(['success' => false, 'message' => 'Login Incorreto.']);
 }
 ?>

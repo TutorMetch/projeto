@@ -1,3 +1,3 @@
 <?php
-echo "Alterar senha";
+echo "pagina alterar senha";
 ?>

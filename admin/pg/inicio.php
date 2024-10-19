@@ -1,3 +1,1 @@
-<h1>
-    painel
-</h1>
+<h1>Página Inicial</h1>

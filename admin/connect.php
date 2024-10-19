@@ -8,23 +8,8 @@ define('USER', 'root');
 
 define('PASS', '');
 
-
 class connect
 {
-  function query($sql)
-  {
-    try {
-      $cnx = new PDO('mysql:host=' . HOST . ';dbname=' . DB . '', USER, PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-      return $cnx->query($sql);
-    } catch (PDOException $e) {
-      echo "Ops! desculpe, algo deu errado, por favor tente mais tarde:<br>";
-      if ($_SESSION['debug'] == true) {
-        echo $e->getMessage();
-      }
-      exit;
-    }
-    $cnx = null;
-  }
 
   function select($sql)
   {
@@ -35,9 +20,8 @@ class connect
       return $con->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       echo "Ops! desculpe, algo deu errado, por favor tente mais tarde:<br>";
-      if ($_SESSION['debug'] == true) {
-        echo $e->getMessage();
-      }
+      echo "<br>";
+      echo $e->getMessage();
       exit;
     }
     $cnx = null;
@@ -52,9 +36,8 @@ class connect
       return $con->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       echo "Ops! desculpe,  algo deu errado, por favor tente mais tarde:<br>";
-      if ($_SESSION['debug'] == true) {
-        echo $e->getMessage();
-      }
+      echo "<br>";
+      echo $e->getMessage();
       exit;
     }
     $cnx = null;
@@ -80,16 +63,37 @@ class connect
     return $query;
   }
 
-  function delete($query)
+  //Antes:
+  //function delete($query)
+  //{
+  //  $cnx = new PDO('mysql:host=' . HOST . ';dbname=' . DB . '', USER, PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+  //  $con = $cnx->prepare($query);
+  //  if (!$con->execute()) {
+  //    $erro = $con->errorInfo();
+  //    return array('msg' => $erro['2'], "codErro" => $erro['1']);
+  //  }
+  //  return "Excluído com Sucesso!";
+  //  $cnx = null;
+  //}
+
+  function delete($tabela, $condicao)
   {
-    $cnx = new PDO('mysql:host=' . HOST . ';dbname=' . DB . '', USER, PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    $con = $cnx->prepare($query);
-    if (!$con->execute()) {
-      $erro = $con->errorInfo();
-      return array('msg' => $erro['2'], "codErro" => $erro['1']);
-    }
-    return "Excluído com Sucesso!";
-    $cnx = null;
+      try {
+          $cnx = new PDO('mysql:host=' . HOST . ';dbname=' . DB . '', USER, PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+          $query = "DELETE FROM $tabela WHERE $condicao";
+          $con = $cnx->prepare($query);
+          if (!$con->execute()) {
+              $erro = $con->errorInfo();
+              return array('msg' => $erro['2'], "codErro" => $erro['1']);
+          }
+          return array('msg' => 'Excluído com Sucesso!', "codErro" => 0);
+      } catch (PDOException $e) {
+          echo "Ops! desculpe, algo deu errado, por favor tente mais tarde:<br>";
+          echo "<br>";
+          echo $e->getMessage();
+          exit;
+      }
+      $cnx = null;
   }
 
   function insert($tabela, $dados)
@@ -116,9 +120,9 @@ class connect
     $con = $cnx->prepare($SQL);
     if (!$con->execute()) {
       $erro = $con->errorInfo();
-      return array('msg' => $erro['2'], "codErro" => $erro['1']);
+      return ['msg' => $erro['2'], "codErro" => $erro['1']];
     }
-    return "Inserido com Sucesso!";
+    return ['msg' => 'Cadastrado com sucesso!', "codErro" => 0];
     $cnx = null;
   }
 
@@ -146,7 +150,8 @@ class connect
       $erro = $con->errorInfo();
       return array("msg" => $erro['2'], "codErro" => $erro['1']);
     }
-    return "Alterado com Sucesso!";
+    return array("msg" => "Registro alterado com sucesso!", "codErro" => 0);
+
     $cnx = null;
   }
 }

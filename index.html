@@ -24,6 +24,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
@@ -91,10 +92,10 @@
       <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
+        <h2 class="titulo" data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
+        <p class="subtitulo" data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a href="courses.html" class="btn-get-started">Get Started</a>
+          <a id="botao" href="courses.html" class="btn-get-started">Começar</a>
         </div>
       </div>
 
@@ -541,8 +542,10 @@
         <div class="col-lg-4 col-md-12 footer-newsletter">
           <h4>Our Newsletter</h4>
           <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+          <form class="newsletter-form">
+            <input type="email" name="email" placeholder="Enter your email">
+            <input type="submit" value="Subscribe">
+          </form>
             <div class="loading">Loading</div>
             <div class="error-message"></div>
             <div class="sent-message">Your subscription request has been sent. Thank you!</div>
@@ -565,22 +568,80 @@
 
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+ <!-- Scroll Top -->
+ <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+  class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+<!-- Preloader -->
+<div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/typed.js/typed.umd.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/jquery/jquery.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- Main JS File -->
+
+<script src="assets/js/scripts.js"></script>
+
+  <script>
+
+    $(function () {
+
+
+      //carrega funções
+      // Página Home
+      carregaHome('api.php?acao=getSettings', (data) => {
+
+        const subtitulo = data.find(item => item.setting_key === "html_subpg").setting_value;
+        const botao = data.find(item => item.setting_key === "botao_pgp").setting_value;
+        const instaLink = data.find(item => item.setting_key === "link_insta").setting_value;
+        const linkedinLink = data.find(item => item.setting_key === "link_linkedin").setting_value;
+        const titulo = data.find(item => item.setting_key === "titulo_pgp").setting_value;
+        const imgPerfil = data.find(item => item.setting_key === "img_perfil").setting_value;
+        const imgFundopg = data.find(item => item.setting_key === "img_fundopg").setting_value;
+        const texto_perfil = data.find(item => item.setting_key === "texto_perfil").setting_value;
+        const texto_sobre = data.find(item => item.setting_key === "html_sobre").setting_value;
+        const html_experiencia = data.find(item => item.setting_key === "html_experiencia").setting_value;
+        const html_servicos = data.find(item => item.setting_key === "html_servicos").setting_value;
+        const html_contato = data.find(item => item.setting_key === "html_contato").setting_value;
+        const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
+
+
+        $('.btn-get-started').attr('href', botao);
+        $('.social-links .instagram').attr('href', instaLink);
+        $('.social-links .linkedin').attr('href', linkedinLink);
+        $('.titulo').html(titulo);
+        $('.subtitulo').html(subtitulo);
+        $('.container p[data-aos="fade-up"][data-aos-delay="200"]').html(subtitulo);
+        $('.profile-img img').attr("src", `./assets/img/dinamicas/${imgPerfil}`);
+        $('#hero h2').html(titulo);
+        $('#hero p').html(subtitulo);
+        $('#hero').css('background', `url("./assets/img/dinamicas/${imgFundopg}") top center`);
+        $('#hero .typed').attr("data-typed-items", texto_perfil);
+        $('#sobre').html(texto_sobre);
+        $('#experiencia').html(html_experiencia);
+        $('#servicos').html(html_servicos);
+        $('#contato').html(html_contato);
+        $('#footer').html(html_rodape);
+
+      }); //fim página home
+
+
+    })
+
+  </script>
+
+  <script src="assets/js/main.js" defer></script>
+
 
 </body>
 
