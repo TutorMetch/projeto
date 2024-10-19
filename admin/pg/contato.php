@@ -2,7 +2,7 @@
 
 if (isset($_POST['salvar'])) {
 
-    $r = Helpers::setSettings("html_contato", $_POST['html_contato']);
+    $r = Helpers::setSettings("sobrepg_html", $_POST['sobrepg_html']);
 
     if ($r['codErro'] != 0) {
         Helpers::alertaErro("Erro: {$r['msg']}");
@@ -35,8 +35,8 @@ if (isset($_POST['salvar'])) {
 </script>
 
 <form method="post">
-    <textarea name="html_contato">
- <?= Helpers::getSettings("html_contato") ?>
+    <textarea name="sobrepg_html">
+ <?= Helpers::getSettings("sobrepg_html") ?>
 </textarea>
     <input class="btn btn-success" type="submit" name="salvar" value="Salvar">
 </form>

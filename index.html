@@ -89,7 +89,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+      <img class="" src="" alt="" data-aos="fade-in">
 
       <div class="container">
         <h2 class="titulo" data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
@@ -612,7 +612,7 @@
         const texto_sobre = data.find(item => item.setting_key === "html_sobre").setting_value;
         const html_experiencia = data.find(item => item.setting_key === "html_experiencia").setting_value;
         const html_servicos = data.find(item => item.setting_key === "html_servicos").setting_value;
-        const html_contato = data.find(item => item.setting_key === "html_contato").setting_value;
+        const sobrepg_html = data.find(item => item.setting_key === "sobrepg_html").setting_value;
         const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
 
 
@@ -630,7 +630,7 @@
         $('#sobre').html(texto_sobre);
         $('#experiencia').html(html_experiencia);
         $('#servicos').html(html_servicos);
-        $('#contato').html(html_contato);
+        $('#about').html(sobrepg_html);
         $('#footer').html(html_rodape);
 
       }); //fim página home

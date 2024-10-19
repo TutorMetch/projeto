@@ -53,7 +53,7 @@ if (isset($_POST['imagens_Home'])) {
 
             if ($imgPerfil->processed) {
                 $imgPerfil->clean();
-                $rImgPerfil = $sql->update("settings", ['setting_value' => $imgPerfil->file_dst_name], "id=6");
+                $rImgPerfil = $sql->update("settings", ['setting_value' => $imgPerfil->file_dst_name], "id=17");
                 if ($rImgPerfil['codErro'] != 0) {
                     Helpers::alertaErro("Erro ao salvar a imagem do perfil no banco de dados.");
                 }
