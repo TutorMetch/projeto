@@ -2,7 +2,7 @@
 
 if (isset($_POST['salvar'])) {
 
-    $r = Helpers::setSettings("html_experiencia", $_POST['html_experiencia']);
+    $r = Helpers::setSettings("valorespg_pg", $_POST['valorespg_pg']);
 
     if ($r['codErro'] != 0) {
         Helpers::alertaErro("Erro: {$r['msg']}");
@@ -35,8 +35,8 @@ if (isset($_POST['salvar'])) {
 </script>
 
 <form method="post">
-    <textarea name="html_experiencia">
- <?= Helpers::getSettings("html_experiencia") ?>
+    <textarea name="valorespg_pg">
+ <?= Helpers::getSettings("valorespg_pg") ?>
 </textarea>
     <input class="btn btn-success" type="submit" name="salvar" value="Salvar">
 </form>

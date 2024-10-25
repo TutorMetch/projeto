@@ -132,46 +132,6 @@
 
     </section><!-- /About Section -->
 
-    <!-- Counts Section -->
-    <section id="counts" class="section counts light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Students</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Courses</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Events</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Trainers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Counts Section -->
 
     <!-- Why Us Section -->
     <section id="why-us" class="section why-us">
@@ -609,12 +569,13 @@
         const imgPerfil = data.find(item => item.setting_key === "img_perfil").setting_value;
         const imgFundopg = data.find(item => item.setting_key === "img_fundopg").setting_value;
         const texto_perfil = data.find(item => item.setting_key === "texto_perfil").setting_value;
-        const texto_sobre = data.find(item => item.setting_key === "html_sobre").setting_value;
-        const html_experiencia = data.find(item => item.setting_key === "html_experiencia").setting_value;
+        const feature_pg = data.find(item => item.setting_key === "feature_pg").setting_value;
+        const valorespg_pg = data.find(item => item.setting_key === "valorespg_pg").setting_value;
         const html_servicos = data.find(item => item.setting_key === "html_servicos").setting_value;
         const sobrepg_html = data.find(item => item.setting_key === "sobrepg_html").setting_value;
         const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
-
+        
+        
 
         $('.btn-get-started').attr('href', botao);
         $('.social-links .instagram').attr('href', instaLink);
@@ -627,8 +588,8 @@
         $('#hero p').html(subtitulo);
         $('#hero').css('background', `url("./assets/img/dinamicas/${imgFundopg}") top center`);
         $('#hero .typed').attr("data-typed-items", texto_perfil);
-        $('#sobre').html(texto_sobre);
-        $('#experiencia').html(html_experiencia);
+        $('#features').html(feature_pg);
+        $('#why-us').html(valorespg_pg);
         $('#servicos').html(html_servicos);
         $('#about').html(sobrepg_html);
         $('#footer').html(html_rodape);
