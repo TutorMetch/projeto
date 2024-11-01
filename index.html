@@ -571,9 +571,11 @@
         const texto_perfil = data.find(item => item.setting_key === "texto_perfil").setting_value;
         const feature_pg = data.find(item => item.setting_key === "feature_pg").setting_value;
         const valorespg_pg = data.find(item => item.setting_key === "valorespg_pg").setting_value;
-        const html_servicos = data.find(item => item.setting_key === "html_servicos").setting_value;
+        const cursos_pg = data.find(item => item.setting_key === "cursos_pg").setting_value;
         const sobrepg_html = data.find(item => item.setting_key === "sobrepg_html").setting_value;
         const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
+        const treiners_pg = data.find(item => item.setting_key === "treiners_pg").setting_value;
+        
         
         
 
@@ -590,9 +592,11 @@
         $('#hero .typed').attr("data-typed-items", texto_perfil);
         $('#features').html(feature_pg);
         $('#why-us').html(valorespg_pg);
-        $('#servicos').html(html_servicos);
+        $('#courses').html(cursos_pg);
         $('#about').html(sobrepg_html);
         $('#footer').html(html_rodape);
+        $('#trainers-index').html(treiners_pg);
+        
 
       }); //fim página home
 

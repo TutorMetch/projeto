@@ -38,9 +38,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="?pg=experiencia">Experiência</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=portfolio">Portifólio</a>
-                        </li>
+                     
                         <li class="nav-item">
                             <a class="nav-link" href="?pg=servicos">Serviços</a>
                         </li>
@@ -49,6 +47,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?pg=rodape">Rodapé</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="?pg=treiners">treiners</a>
                         </li>
                     </ul>
                 </div>
