@@ -575,6 +575,7 @@
         const sobrepg_html = data.find(item => item.setting_key === "sobrepg_html").setting_value;
         const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
         const treiners_pg = data.find(item => item.setting_key === "treiners_pg").setting_value;
+        const menu_pg = data.find(item => item.setting_key === "menu_pg").setting_value;
         
         
         
@@ -596,6 +597,8 @@
         $('#about').html(sobrepg_html);
         $('#footer').html(html_rodape);
         $('#trainers-index').html(treiners_pg);
+        $('#header').html(menu_pg);
+
         
 
       }); //fim página home
