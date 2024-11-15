@@ -55,6 +55,9 @@
                           <li class="nav-item">
                             <a class="nav-link" href="?pg=menu">menu</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?pg=cursos">cursos</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
