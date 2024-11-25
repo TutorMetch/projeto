@@ -2,7 +2,7 @@
 
 if (isset($_POST['salvar'])) {
 
-    $r = Helpers::setSettings("cursos_pg", $_POST['cursos_pg']);
+    $r = Helpers::setSettings("cursos_pgc", $_POST['cursos_pgc']);
 
     if ($r['codErro'] != 0) {
         Helpers::alertaErro("Erro: {$r['msg']}");
@@ -35,8 +35,10 @@ if (isset($_POST['salvar'])) {
 </script>
 
 <form method="post">
-    <textarea name="cursos_pg">
- <?= Helpers::getSettings("cursos_pg") ?>
+    <textarea name="cursos_pgc">
+ <?= Helpers::getSettings("cursos_pgc") ?>
 </textarea>
     <input class="btn btn-success" type="submit" name="salvar" value="Salvar">
 </form>
+
+

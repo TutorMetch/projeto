@@ -85,7 +85,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
+    <div id="titulo" class="page-title" data-aos="fade">
       <div class="heading">
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
@@ -293,8 +293,8 @@
       //carrega funções
       // Página About
       carregaHome('api.php?acao=getSettings', (data) => {
-        const menu_pg = data.find(item => item.setting_key === "menu_pg").setting_value;
-        $('#header').html(menu_pg);
+        const cursos_pgc = data.find(item => item.setting_key === "cursos_pgc").setting_value;
+        $('#titulo').html(cursos_pgc);
       }); //fim página about
     });
   </script>
