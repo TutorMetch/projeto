@@ -75,3 +75,16 @@ if (isset($_POST['salvar_resto'])) {
 </textarea>
     <input class="btn btn-success" type="submit" name="salvar_resto" value="Salvar">
 </form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -29,34 +29,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="?pg=homePg">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=sobre">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=experiencia">Experiência</a>
-                        </li>
-                     
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=servicos">Serviços</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=contato">Contato</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=rodape">Rodapé</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="?pg=treiners">treiners</a>
-                        </li>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="?pg=menu">menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?pg=cursos">cursos</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Principal
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="?pg=menu">Menu</a></li>
+                                <li><a class="dropdown-item" href="?pg=rodape">Rodapé</a></li>
+                                <li><a class="dropdown-item" href="?pg=homePg">Home</a></li>
+                                <li><a class="dropdown-item" href="?pg=about">Sobre</a></li>
+                                <li><a class="dropdown-item" href="?pg=cursos">Cursos</a></li>
+                                <li><a class="dropdown-item" href="?pg=trainers">Professores</a></li>
+                                <li><a class="dropdown-item" href="?pg=events">Eventos</a></li>
+                                <li><a class="dropdown-item" href="?pg=pricing">Preços</a></li>
+                                <li><a class="dropdown-item" href="?pg=contact">Contato</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

@@ -39,7 +39,7 @@
 <body class="pricing-page">
 
   <header id="header" class="header d-flex align-items-center sticky-top" >
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div id="menu" class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -85,7 +85,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
+    <div id="page-title" class="page-title" data-aos="fade">
       <div class="heading">
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
@@ -277,15 +277,22 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/main.js"></script>
   <script>
     $(function () {
       //carrega funções
       // Página Pricing
       carregaHome('api.php?acao=getSettings', (data) => {
         const menu_pg = data.find(item => item.setting_key === "menu_pg").setting_value;
-        $('#header').html(menu_pg);
+        const html_rodape = data.find(item => item.setting_key === "html_rodape").setting_value;
+        const page_title_pricing_pg = data.find(item => item.setting_key === "page_title_pricing_pg").setting_value;
+        const pricing_pricing_pg = data.find(item => item.setting_key === "pricing_pricing_pg").setting_value;
+
+        $('#footer').html(html_rodape);
+        $('#menu').html(menu_pg);
+        $('#page-title').html(page_title_pricing_pg);
+        $('#pricing').html(pricing_pricing_pg);
       }); //fim página pricing
     });
   </script>

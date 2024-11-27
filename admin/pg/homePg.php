@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['salvar'])) {
+if (isset($_POST['salvar_home'])) {
     $titulo = $_POST['titulo_pgp'];
     $subtitulo = $_POST['html_subpg'];
     $botao = $_POST['botao_pgp'];
@@ -23,7 +23,7 @@ if (isset($_POST['salvar'])) {
         }
     }
 
-    Helpers::alertaSucesso("Alterado com sucesso!");
+    Helpers::alertaSucesso("Página Home salva com sucesso!");
 }
 
 if (isset($_POST['imagens_Home'])) {
@@ -36,7 +36,6 @@ if (isset($_POST['imagens_Home'])) {
 
         //buscar nome da imagem no banco de dados
         $img_antiga = Helpers::getSettings("img_perfil");
-
 
         if (file_exists($caminho . $img_antiga)) {
             unlink($caminho . $img_antiga);
@@ -97,6 +96,54 @@ if (isset($_POST['imagens_Home'])) {
 
     Helpers::alertaSucesso("Imagens alteradas com sucesso!");
 }
+
+if (isset($_POST['salvar_servicos'])) {
+    $r = Helpers::setSettings("cursos_pg", $_POST['cursos_pg']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Página serviços salva com sucesso!");
+}
+
+if (isset($_POST['salvar_experiencia'])) {
+    $r = Helpers::setSettings("valorespg_pg", $_POST['valorespg_pg']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Página experiência salva com sucesso!");
+}
+
+if (isset($_POST['salvar_treiners'])) {
+    $r = Helpers::setSettings("treiners_pg", $_POST['treiners_pg']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Página treiners salva com sucesso!");
+}
+
+if (isset($_POST['salvar_sobre'])) {
+    $r = Helpers::setSettings("feature_pg", $_POST['feature_pg']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Página sobre salva com sucesso!");
+}
+
+if (isset($_POST['salvar_contato'])) {
+    $r = Helpers::setSettings("sobrepg_html", $_POST['sobrepg_html']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Página sobre salva com sucesso!");
+}
+
+if (isset($_POST['salvar_why_us'])) {
+    $r = Helpers::setSettings("whyus_pg", $_POST['whyus_pg']);
+    if ($r['codErro'] != 0) {
+        Helpers::alertaErro("Erro: {$r['msg']}");
+    }
+    Helpers::alertaSucesso("Seção 'Por que nós' salva com sucesso!");
+}
 ?>
 
 <h1>Home</h1>
@@ -121,7 +168,7 @@ if (isset($_POST['imagens_Home'])) {
     <input class="form-control" type="text" name="texto_perfil" id="texto_perfil" value="<?= Helpers::getSettings("texto_perfil") ?>">
 
     <br>
-    <input class="form-control" type="submit" name="salvar" value="Salvar">
+    <input class="form-control" type="submit" name="salvar_home" value="Salvar">
 </form>
 
 <hr>
@@ -135,3 +182,202 @@ if (isset($_POST['imagens_Home'])) {
 
     <input type="submit" class="form-control" name="imagens_Home" value="Salvar">
 </form>
+
+<hr>
+
+<h1>Resumo</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="sobrepg_html">
+ <?= Helpers::getSettings("sobrepg_html") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_contato" value="Salvar">
+</form>
+
+<hr>
+
+<h1>Por que nós</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="whyus_pg">
+ <?= Helpers::getSettings("whyus_pg") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_why_us" value="Salvar">
+</form>
+
+<hr>
+
+<h1>Sobre</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="feature_pg">
+ <?= Helpers::getSettings("feature_pg") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_sobre" value="Salvar">
+</form>
+
+<hr>
+
+<h1>Serviços</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="cursos_pg">
+ <?= Helpers::getSettings("cursos_pg") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_servicos" value="Salvar">
+</form>
+
+<hr>
+
+<h1>Experiência</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="valorespg_pg">
+ <?= Helpers::getSettings("valorespg_pg") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_experiencia" value="Salvar">
+</form>
+
+<hr>
+
+<h1>Trainers</h1>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        document_base_url: url,
+        content_css: `${url}/assets/css/style.css`,
+        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        remove_script_host: false,
+    });
+</script>
+
+<form method="post">
+    <textarea name="treiners_pg">
+ <?= Helpers::getSettings("treiners_pg") ?>
+</textarea>
+    <input class="btn btn-success" type="submit" name="salvar_treiners" value="Salvar">
+</form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
