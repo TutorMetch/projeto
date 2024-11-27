@@ -107,7 +107,7 @@
     </div><!-- End Page Title -->
 
     <!-- Courses Section -->
-    <section id="courses" class="courses section">
+    <section id="coursese" class="courses section">
 
       <div class="container">
 
@@ -295,6 +295,8 @@
       carregaHome('api.php?acao=getSettings', (data) => {
         const cursos_pgc = data.find(item => item.setting_key === "cursos_pgc").setting_value;
         $('#titulo').html(cursos_pgc);
+        const cursos_resto = data.find(item => item.setting_key === "cursos_resto").setting_value;
+        $('#coursese').html(cursos_resto);
       }); //fim página about
     });
   </script>
