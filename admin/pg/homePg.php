@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 if (isset($_POST['salvar_home'])) {
     $titulo = $_POST['titulo_pgp'];
     $subtitulo = $_POST['html_subpg'];
@@ -196,14 +200,26 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
+        toolbar: 'image | insertImageFromUrl | undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        setup: function (editor) {
+            editor.ui.registry.addButton('insertImageFromUrl', {
+                text: 'Insert Image from URL',
+                onAction: function () {
+                    var imageUrl = prompt("Enter the image URL");
+                    if (imageUrl) {
+                        editor.insertContent('<img src="' + imageUrl + '" />');
+                    }
+                }
+            });
+        }
     });
 </script>
 
@@ -227,14 +243,46 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        images_upload_url: '../upload.php', // Certifique-se de que o caminho está correto
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '../upload.php'); // Certifique-se de que o caminho está correto
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
     });
 </script>
 
@@ -258,14 +306,46 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        images_upload_url: '../upload.php', // Certifique-se de que o caminho está correto
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', './admin/upload.'); // Certifique-se de que o caminho está correto
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
     });
 </script>
 
@@ -289,14 +369,46 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        images_upload_url: '../upload.php', // Certifique-se de que o caminho está correto
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '../upload.php'); // Certifique-se de que o caminho está correto
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
     });
 </script>
 
@@ -320,14 +432,46 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        images_upload_url: '../upload.php', // Certifique-se de que o caminho está correto
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '../upload.php'); // Certifique-se de que o caminho está correto
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
     });
 </script>
 
@@ -351,14 +495,46 @@ if (isset($_POST['salvar_why_us'])) {
         selector: 'textarea',
         language: 'pt_BR',
         plugins: [
-            // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'code', 'fullscreen'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | code fullscreen',
         document_base_url: url,
         content_css: `${url}/assets/css/style.css`,
-        relative_urls: false, // Usa URLs absolutas para garantir o caminho correto
+        relative_urls: false,
         remove_script_host: false,
+        images_upload_url: '../upload.php', // Certifique-se de que o caminho está correto
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '../upload.php'); // Certifique-se de que o caminho está correto
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
     });
 </script>
 
