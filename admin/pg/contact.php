@@ -5,8 +5,9 @@ if (isset($_POST['salvar_page_title'])) {
     $r = Helpers::setSettings("page_title_contact_pg", $page_title_html);
     if ($r['codErro'] != 0) {
         Helpers::alertaErro("Erro: {$r['msg']}");
+    } else {
+        Helpers::alertaSucesso("Título da página salvo com sucesso!");
     }
-    Helpers::alertaSucesso("Título da página salvo com sucesso!");
 }
 
 if (isset($_POST['salvar_contact'])) {
@@ -14,8 +15,9 @@ if (isset($_POST['salvar_contact'])) {
     $r = Helpers::setSettings("contact_contact_pg", $contact_html);
     if ($r['codErro'] != 0) {
         Helpers::alertaErro("Erro: {$r['msg']}");
+    } else {
+        Helpers::alertaSucesso("Seção de contato salva com sucesso!");
     }
-    Helpers::alertaSucesso("Seção 'Contato' salva com sucesso!");
 }
 ?>
 
@@ -37,15 +39,15 @@ if (isset($_POST['salvar_contact'])) {
         content_css: `${url}/assets/css/style.css`,
         relative_urls: false,
         remove_script_host: false,
-        extended_valid_elements: 'span[*],div[*],section[*],p[*],button[*]',
+        extended_valid_elements: 'span[*],div[*],section[*],p[*]',
         valid_elements: '*[*]'
     });
 </script>
 
 <form method="post">
-    <textarea name="page_title_html">
- <?= Helpers::getSettings("page_title_contact_pg") ?>
-</textarea>
+    <textarea name="page_title_html" class="form-control">
+        <?= htmlspecialchars(Helpers::getSettings("page_title_contact_pg")) ?>
+    </textarea>
     <input class="btn btn-success" type="submit" name="salvar_page_title" value="Salvar">
 </form>
 
@@ -54,9 +56,9 @@ if (isset($_POST['salvar_contact'])) {
 <h1>Contato</h1>
 
 <form method="post">
-    <textarea name="contact_html">
- <?= Helpers::getSettings("contact_contact_pg") ?>
-</textarea>
+    <textarea name="contact_html" class="form-control">
+        <?= htmlspecialchars(Helpers::getSettings("contact_contact_pg")) ?>
+    </textarea>
     <input class="btn btn-success" type="submit" name="salvar_contact" value="Salvar">
 </form>
 
