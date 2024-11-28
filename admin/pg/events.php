@@ -22,7 +22,7 @@ if (isset($_POST['salvar_events'])) {
 <h1>Título da Página</h1>
 
 <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/91yvdlvgrvd7ilvubca1v13xfxpwf0dcuf2xmg2gih7pc4nv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/07l2hhqrlose4xzofroqaygf9vfjaoa10w8mu1yb30mbbqwq/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
 <script>
