@@ -19,14 +19,6 @@ if (isset($_POST['salvar_contact'])) {
         Helpers::alertaSucesso("Seção de contato salva com sucesso!");
     }
 }
-if (isset($_POST['salvar_contact_rodape'])) {
-    $contact_rodape_pg = $_POST['contact_rodape_pg'];
-    $r = Helpers::setSettings("contact_rodape_pg", $contact_rodape_pg);
-    if ($r['codErro'] != 0) {
-        Helpers::alertaErro("Erro: {$r['msg']}");
-    }
-    Helpers::alertaSucesso("Seção 'Contato' salva com sucesso!");
-}
 ?>
 
 <h1>Título da Página</h1>
@@ -69,12 +61,6 @@ if (isset($_POST['salvar_contact_rodape'])) {
     </textarea>
     <input class="btn btn-success" type="submit" name="salvar_contact" value="Salvar">
 </form>
-
-
-
-
-
-
 
 <br>
 <br>
